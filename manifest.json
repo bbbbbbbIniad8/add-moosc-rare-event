@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Simple Extension Template",
+  "version": "0.1.0",
+  "description": "Vite + React Chrome Extension Template",
+
+  "action": {
+    "default_popup": "index.html"
+  },
+
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+
+  
+  "content_scripts": [
+  {
+    "matches": ["https://moocs.iniad.org/courses"],
+    "js": ["src/content.ts"]
+  }
+],
+  "permissions": []
+}
