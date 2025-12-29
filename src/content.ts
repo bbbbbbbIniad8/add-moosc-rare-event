@@ -1,29 +1,26 @@
 import './index.css'
-import { createWellContent } from './func/common';
 import { darkmode, darkmodeSwitch } from './func/darkmode';
-import { uboaEvent } from './event/uboa/uboa';
+import { addUboaWell, uboaEvent } from './event/uboa/uboa';
 import type { colorMode } from './type/type';
+import { addSpk } from './event/spk/spk';
+import { randomNum } from './func/common';
 
-
-const uboaEventRun = false
+const funValMax = 200;
+const funValue = randomNum(0, funValMax)
 
 const nowColorMode = "light" as colorMode
 const tables = document.getElementsByClassName("row flex")
+const lightBtn = darkmodeSwitch()
+let lightEvent: (() => void)[] = [];
 if (tables.length > 0) {
-    const element1 = createWellContent("情報連携のためのｽﾋﾟｷ",
-                                    "https://pbs.twimg.com/media/G7s0RbrbAAIaLs5?format=png&name=medium",
-                                  "https://youtu.be/HDjdSK-oRC4?si=-nmF90E9IKcBW9eB")
-
-    const element2 = createWellContent("ポ二子",
-                                    chrome.runtime.getURL("poniko.png"),
-                                    "https://www3.nns.ne.jp/~tk-mto/kikiyamaHP.html") 
-    element2.id = "poniko"
-    tables[0].prepend(element1);
-    tables[0].prepend(element2);
+  if (funValue < 50){
+    addSpk(tables[0])
+  }else if (funValue < 75){
+    addUboaWell(tables[0])
+    lightEvent = [() => uboaEvent(lightBtn, nowColorMode)];
+  }
 } else {
     console.error("エラー");
 }
-const lightBtn = darkmodeSwitch()
-if (uboaEventRun === false){
-  darkmode(lightBtn, nowColorMode, [() => uboaEvent(lightBtn, nowColorMode)], null)
-}
+
+darkmode(lightBtn, nowColorMode, lightEvent, null)

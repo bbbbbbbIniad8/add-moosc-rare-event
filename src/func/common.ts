@@ -68,5 +68,13 @@ function deleteAllAnchersHref(){
     element.removeAttribute("href");
   })
 }
+function addWell(parentElement: Element, title: string, imgPath: string, linkPath: string ){
+    const element = createWellContent(title,
+                                      imgPath,
+                                      linkPath) 
+    parentElement.prepend(element);
+    return element
+    }
 
-export {randomNum, createElementClass, createWellContent, changeWellStyle, changeBackgraundColor, deleteAllAnchersHref}
+export {randomNum, createElementClass, createWellContent, addWell,
+       changeWellStyle, changeBackgraundColor, deleteAllAnchersHref}

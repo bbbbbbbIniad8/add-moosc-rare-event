@@ -7,7 +7,7 @@ function darkmodeSwitch(){
     const btnParent = document.createElement("div")
     Object.assign(btnParent.style, {
         display: "flex",
-        justifyContent: "flex-end"}
+        justifyContent: "flex-end" }
     )
     const lightBtn = createElementClass("div", "hidden-xs");
     if (header.length > 0) {
@@ -40,7 +40,7 @@ function darkmodeSwitch(){
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-const darkmode =(lightBtn :HTMLElement, nowColorMode: colorMode, LightEvent: [() => void] | null, DarkEvent: [() => void] | null) => {
+const darkmode =(lightBtn :HTMLElement, nowColorMode: colorMode, LightEvent: (() => void)[] | null, DarkEvent: (() => void)[] | null) => {
     let isProcessing = false;
     lightBtn.onclick =  async() =>{
         if (isProcessing) return 

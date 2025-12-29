@@ -1,9 +1,20 @@
-import { randomNum, changeBackgraundColor, deleteAllAnchersHref } from "../../func/common";
+import { randomNum, changeBackgraundColor, deleteAllAnchersHref, addWell } from "../../func/common";
 import { shake, flash } from "../../effect/effect";
 import type { colorMode } from "../../type/type";
 
+
+function addUboaWell(parentElement: Element){
+    const element = addWell(parentElement,
+                            "ポ二子",
+                            chrome.runtime.getURL("poniko.png"),
+                            "https://www3.nns.ne.jp/~tk-mto/kikiyamaHP.html") 
+    element.id = "poniko"
+    parentElement.prepend(element);
+    return element
+}
+
 function uboaEvent(btn: HTMLElement, color: colorMode){
-    if (randomNum(0, 63) > 4 && color === "light"){
+    if (randomNum(0, 63) === 4 && color === "light"){
         flash()
         shake()
         const poniko = document.querySelector("body > div.wrapper > div > section.content.container-fluid > div:nth-child(1) > div:nth-child(1) > div > div > div.media-left.media-middle > img") as HTMLImageElement
@@ -32,12 +43,10 @@ function uboaEvent(btn: HTMLElement, color: colorMode){
             if(title){
                 title.textContent = "繧ｦ繝懊ぃ"
             }
-            
-        
-        }else{
+        } else {
             console.log("エラー")
         }
     }
 }
 
-export { uboaEvent }
+export { uboaEvent, addUboaWell }
