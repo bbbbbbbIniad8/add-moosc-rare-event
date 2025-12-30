@@ -53,6 +53,23 @@ async function typeEffect(div: HTMLElement) {
     closeCurrentTab();
 }
 
+function hatizihanEvent(e: PointerEvent){
+    e.preventDefault()
+    clickNum++
+    if (clickNum >= 4){
+        const div = colorOut("#ff0808ff", 0.5)
+        Object.assign(div.style,{
+            fontSize: "80px",
+            color: "white",
+            fontWeight: "1000",
+            overflow: "scroll",
+        })
+        typeEffect(div)
+    } else {
+        breakEffect()
+    }
+}
+
 function addHatizihanWell(parentElement: Element){
     const element = addWell(parentElement,
                             "만져서는 안 된다",
@@ -66,25 +83,11 @@ function addHatizihanWell(parentElement: Element){
     const img = element.querySelector("img")
     if (!img) return
     btn.addEventListener("click", (e)=>{
-        e.preventDefault()
-        clickNum++
-        if (clickNum >= 4){
-            const div = colorOut("#ff0808ff")
-            typeEffect(div)
-        } else {
-            breakEffect()
-        }
+        hatizihanEvent(e)
     })
 
     img.addEventListener("click", (e)=>{
-        e.preventDefault()
-        clickNum++
-        if (clickNum >= 4){
-            const div = colorOut("#ff0808ff")
-            typeEffect(div)
-        } else {
-            breakEffect()
-        }
+        hatizihanEvent(e)
     })
     return element
 }

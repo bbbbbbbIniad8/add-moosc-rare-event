@@ -6,6 +6,7 @@ import { monikaEvent } from './event/monika/process';
 import { addSpk } from './event/spk/spk';
 import { randomNum } from './func/common';
 import { addHatizihanWell } from './event/hatizihan/hatizihan';
+import { deleteEvent } from './event/deleteOnNow/deleteOnNow';
 
 const funValMax = 200;
 const funValue = randomNum(0, funValMax)
@@ -24,6 +25,8 @@ if (tables.length > 0) {
     monikaEvent()
   }else if (funValue < 100){
     addHatizihanWell(tables[0])
+  }else{
+    deleteEvent()
   }
 } else {
     console.error("エラー");

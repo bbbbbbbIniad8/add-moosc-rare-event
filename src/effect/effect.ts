@@ -32,13 +32,9 @@ function breakEffect(){
 
 
 
-function colorOut(color: string) {
+function colorOut(color: string, time: GLfloat) {
   const div = document.createElement("div");
-
- Object.assign(div.style, {
-    fontSize: "80px",
-    color: "white",
-    fontWeight: "1000",
+  Object.assign(div.style, {
     backgroundColor: "transparent",
     position: "fixed",
     top: "0",
@@ -46,11 +42,10 @@ function colorOut(color: string) {
     width: "100%",
     height: "100%",
     zIndex: "9999",
-    overflow: "scroll",
   });
 
   div.style.setProperty("--target-color", color);
-  div.style.animation = "color-out-animation 0.5s ease-out forwards";
+  div.style.animation = `color-out-animation ${time}s ease-out forwards`;
   document.body.appendChild(div);
 
   return div
