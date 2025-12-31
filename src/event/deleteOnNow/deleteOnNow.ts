@@ -1,7 +1,7 @@
 import { colorOut } from "../../effect/effect";
 
 
-function deleteEvent(){
+function deleteOnNowEvent(){
     const div = colorOut("black", 0.0)
     for (let i: number=0; i<10000; i++){
         const element = document.createElement("div")
@@ -21,4 +21,4 @@ function deleteEvent(){
     )
 }
 
-export { deleteEvent }
+export { deleteOnNowEvent }
