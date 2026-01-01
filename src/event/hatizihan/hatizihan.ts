@@ -6,6 +6,13 @@ let clickNum = 0
 
 
 async function typeEffect(div: HTMLElement) {
+    Object.assign(div.style, {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center", 
+    }
+    )
     let displayText = "";
     let speed = 100;
     let fontSize = 80;
@@ -81,7 +88,6 @@ function addHatizihanWell(parentElement: Element){
     btn.addEventListener("click", (e)=>{
         hatizihanEvent(e)
     })
-
     img.addEventListener("click", (e)=>{
         hatizihanEvent(e)
     })
