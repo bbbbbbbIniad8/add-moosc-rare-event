@@ -16,7 +16,8 @@ function shouldntKilledEvent(){
         top: 0,
         left:0,
         width: "100%",
-        backgroundColor: "black"
+        backgroundColor: "black",
+        pointerEvents: "none",
     })
     div.style.setProperty("--timer", "0.5");
     div.style.setProperty("--op", op);
