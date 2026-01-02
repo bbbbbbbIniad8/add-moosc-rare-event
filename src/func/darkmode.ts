@@ -6,8 +6,8 @@ function darkmodeSwitch(){
     const btnParent = document.createElement("div")
     Object.assign(btnParent.style, {
         display: "flex",
-        justifyContent: "flex-end" }
-    )
+        justifyContent: "flex-end" 
+    })
     const lightBtn = createElementClass("div", "hidden-xs");
     if (header.length > 0) {
         const targetElement = header[0];

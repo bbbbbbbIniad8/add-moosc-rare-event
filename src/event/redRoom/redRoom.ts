@@ -26,8 +26,8 @@ function addRedRoom(){
 
     const size = 400;
     const fontSize = 24
-    const top = 45
-    const DoYouDefaultPosition = size * 0.30
+    const top = 25
+    const DoYouDefaultPosition = size * 0.32
 
     Object.assign(backDiv.style,{
         zIndex: "9000",
@@ -46,14 +46,22 @@ function addRedRoom(){
         position: "fixed",
         display: "flex",
         flexDirection: "column",
-        
     })
+
+    Object.assign(divChild.style,{
+        zIndex: "9000",
+        position: "relative",
+        top: "10px"
+    })
+
     Object.assign(closeBar.style,{
         zIndex: "99999",
         position: "relative",
         width : `${size}px`,
         height: "20px",
-        
+        top: "5px",
+        display: "flex",
+        justifyContent: "flex-end",
     })
 
     Object.assign(closeBtn.style, {
@@ -61,7 +69,8 @@ function addRedRoom(){
         color: "black",
         textAlign: "center",
         backgroundColor: "#BEC9C9",
-        border: "1px solid black"
+        border: "1px solid black",
+        userSelect: "none"
     })
     
     closeBtn.textContent = "X"
@@ -82,7 +91,8 @@ function addRedRoom(){
         top: `${top}px`,
         left: `${DoYouDefaultPosition}px`,
         transform: "rotate(-3deg) scaleY(0.8)",
-        
+        userSelect: "none",
+        fontWeight: "bold"
     })
 
     DoYou.textContent = "あなたは 赤い部屋が"
@@ -91,7 +101,7 @@ function addRedRoom(){
         zIndex: "9900",
         position: "absolute",
         pointerEvents: "none",
-        width: `${size}px`
+        width: `${size}px`,
     })
 
     Object.assign(Like.style,{
@@ -103,8 +113,13 @@ function addRedRoom(){
         top: `${top + 10}px`,
         left: `${size * 0.6}px`,
         transform: "rotate(3deg) scaleY(0.8)",
-        
+        userSelect: "none",
+        fontWeight: "bold"
     })
+    const fontSetting = "'MS PMincho', 'MS P明朝', 'MS Mincho', 'MS 明朝', 'Yu Mincho', '游明朝', serif"
+    DoYou.style.fontFamily = fontSetting
+    Like.style.fontFamily = fontSetting
+
     Like.textContent = "好きですか？"
     let push = 0
 
@@ -121,7 +136,6 @@ function addRedRoom(){
             await deletePopup(backDiv, DoYou, push, size, DoYouDefaultPosition)
         }
     }
-
 )}
 
 async function deletePopup(element: HTMLElement, DoYou: HTMLElement,
