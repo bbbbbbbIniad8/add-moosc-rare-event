@@ -5,7 +5,7 @@ function addRedRoom(){
     const div = document.createElement("div")
     const closeBar = document.createElement("div") 
     const divChild = document.createElement("div")
-    const wrapper = document.querySelector(".wrapper")
+    const wrapper = document.querySelector(".content-wrapper")
     const DoYou = document.createElement("div")
     const Like = document.createElement("div")
     const closeBtn = document.createElement("div")

@@ -1,20 +1,11 @@
 import './index.css'
 import { addDarkMode, darkmodeSwitch} from './func/darkmode';
-import { addUboaWell, uboaEvent } from './event/uboa/uboa';
 import type { colorMode } from './type/type';
-import { monikaEvent } from './event/monika/process';
-import { addSpk } from './event/spk/spk';
-import { randomNum } from './func/common';
-import { addHatizihanWell } from './event/hatizihan/hatizihan';
-import { deleteOnNowEvent } from './event/deleteOnNow/deleteOnNow';
 import { sleep } from './func/common';
-import { addGary } from './event/gary/gary';
-import { addGF, GFEvent } from './event/GF/GF';
-import { shouldntKilledEvent } from './event/TheOneYouShouldntKilled/TheOneYouShouldntKilled';
-import { addRedRoom } from './event/redRoom/redRoom';
+import { eventList, type EventContext } from './eventAdmin';
 
 const pseudoReload = (contentSection: Node | undefined, originalContent: Node | undefined, bgColor: string, fanValue: number|null) => {
-  if (!contentSection||!contentSection.parentNode || !originalContent) return;
+  if (!contentSection || !contentSection.parentNode || !originalContent) return;
   const newContent = originalContent.cloneNode(true) as Node;
   contentSection.parentNode.replaceChild(newContent, contentSection);
   contentSection = newContent;
@@ -23,45 +14,38 @@ const pseudoReload = (contentSection: Node | undefined, originalContent: Node | 
   return contentSection
 };
 
-function decideEvent(bgColor: string, selectedValue: number | null){
-  const funValMax = 300;
-  let funValue = randomNum(0, funValMax)
-  if (selectedValue){
-    funValue = selectedValue
-  }
-
-  let nowColorMode = "light" as colorMode
-  const tables = document.getElementsByClassName("row flex")
-  const lightBtn = darkmodeSwitch()
+function decideEvent(bgColor: string, selectedValue: number | null) {
+  let nowColorMode = "light" as colorMode;
+  const tables = document.getElementsByClassName("row flex");
+  const lightBtn = darkmodeSwitch();
+  
   let lightEvent: (() => void)[] = [];
   let darkEvent: (() => void)[] = [];
-  addRedRoom()
-  if (tables.length > 0) {
-    if (funValue < 50){
-      addSpk(tables[0])
-    }else if (funValue < 75){
-      addUboaWell(tables[0])
-      lightEvent = [() => uboaEvent(lightBtn, nowColorMode)];
-    }else if (funValue < 85){
-      monikaEvent()
-    }else if (funValue < 100){
-      addHatizihanWell(tables[0])
-    }else if (funValue < 101){
-      deleteOnNowEvent()
-    } else if(funValue < 110){
-      nowColorMode = addGF(lightBtn, nowColorMode, bgColor)
-      darkEvent = [() => GFEvent()]
-    }else if (funValue < 150){
-      addGary()
-    }else{
-      shouldntKilledEvent()
-    }
-  } else {
-      console.error("エラー");
-  }
-  addDarkMode(lightBtn, nowColorMode, bgColor, lightEvent, darkEvent)
-}
 
+  if (tables.length > 0) {
+      const totalWeight = eventList.reduce((sum, e) => sum + e.weight, 0);
+      let random = !selectedValue ? (Math.random() * totalWeight) : 9999;
+
+      for (const event of eventList) {
+        if (random < event.weight || selectedValue === event.eventNum) {
+          const ctx: EventContext = {
+            parent: tables[0] as HTMLElement,
+            lightBtn,
+            nowColorMode,
+            bgColor
+          };
+          const result = event.action(ctx);
+          if (result.nowColorMode) nowColorMode = result.nowColorMode;
+          if (result.lightEvent) lightEvent = result.lightEvent;
+          if (result.darkEvent) darkEvent = result.darkEvent;
+          break;
+        }
+        random -= event.weight;
+      }
+    }
+
+  addDarkMode(lightBtn, nowColorMode, bgColor, lightEvent, darkEvent);
+}
 
 let originalContent = undefined as Node | undefined;
 let contentSection = document.querySelector('.content-wrapper') as Node | undefined;

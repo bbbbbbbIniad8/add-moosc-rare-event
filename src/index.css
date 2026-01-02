@@ -93,8 +93,6 @@ button:focus-visible {
   100%{ background-color: var(--target-color)}
 }
 
-
-
 .fade-out { 
     animation: fadeOut calc(var(--timer) * 1s) ease-out; 
     animation-fill-mode: both;
