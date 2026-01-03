@@ -1,5 +1,5 @@
-import { randomNum, changeBackgraundColor, deleteAllAnchersHref, addWell } from "../../func/common";
-import { shake, flash } from "../../effect/effect";
+import { randomNum, changeBackgraundColor, deleteAllAnchersHref, addWell, sleep } from "../../func/common";
+import { shake, flash, colorOut } from "../../effect/effect";
 import type { colorMode } from "../../type/type";
 
 
@@ -14,14 +14,14 @@ function addUboaWell(parentElement: Element){
 }
 
 function uboaEvent(btn: HTMLElement, color: colorMode){
-    if (randomNum(0, 63) === 4 && color === "light"){
+    if (randomNum(0, 63) > 4 && color === "light"){
         flash()
         shake()
         const poniko = document.querySelector("body > div.wrapper > div > section.content.container-fluid > div:nth-child(1) > div:nth-child(1) > div > div > div.media-left.media-middle > img") as HTMLImageElement
         const ponikoHeading = document.querySelector("#poniko > div > div > div.media-body.media-middle > h4")
 
         if (poniko !== null && ponikoHeading !== null){
-            poniko.src = chrome.runtime.getURL("src/event/uboa/pic/uboa.png")
+            poniko.src = chrome.runtime.getURL("src/event/uboa/pic/Uboa1.png")
             ponikoHeading.textContent = ""
             const well = document.querySelectorAll(".well");
 
@@ -36,12 +36,23 @@ function uboaEvent(btn: HTMLElement, color: colorMode){
             btn.onclick = () => {flash()}
             deleteAllAnchersHref()
             const linkBtn = document.querySelector("#poniko > div > div > div.media-body.media-middle > a") as HTMLAnchorElement
-            linkBtn.href = chrome.runtime.getURL("src/event/uboa/uboa.html")
+            
             linkBtn.style.backgroundColor = "#710000ff"
             linkBtn.textContent = "繝ｪ繝ｳ繧ｯ"
             const title = document.querySelector("h4")
             if(title){
                 title.textContent = "   "
+            }
+            linkBtn.onclick = async function(){
+                poniko.src = chrome.runtime.getURL("src/event/uboa/pic/Uboa2.png")
+                await sleep(500)
+                const black = colorOut("black", 0.5)
+                await sleep(500)
+                
+                window.location.href = chrome.runtime.getURL("src/event/uboa/uboa.html")
+                await sleep(1000)
+                black.style.display = "none"
+                poniko.src = chrome.runtime.getURL("src/event/uboa/pic/Uboa1.png")
             }
         } else {
             console.log("エラー")
