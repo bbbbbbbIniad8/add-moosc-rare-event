@@ -61,7 +61,6 @@ const darkModeProcess = (lightBtn :HTMLElement, nowColorMode: colorMode, originB
 
         if (wrapper.length > 0) {
             changeBackgraundColor((nowColorMode === "light" ? "#24272B" : originBgColor))
-
             header.forEach(element => {
                 Object.assign((element as HTMLElement).style, {
                 color: fontColor,

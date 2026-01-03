@@ -65,6 +65,7 @@ function deleteAllAnchersHref(){
     element.removeAttribute("href");
   })
 }
+
 function addWell(parentElement: Element, title: string, imgPath: string, linkPath: string ){
   const element = createWellContent(title,
                                     imgPath,
@@ -78,7 +79,6 @@ const sleep = (ms: number) => new Promise(res => setTimeout(res, ms));
 async function closeCurrentTab() {
     chrome.runtime.sendMessage({ action: "CLOSE_TAB" });
 }
-
 
 async function  timer(isProcessing: boolean, count: number){
     await sleep(1000)

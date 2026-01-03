@@ -5,9 +5,9 @@ import type { colorMode } from "../../type/type";
 
 function addUboaWell(parentElement: Element){
     const element = addWell(parentElement,
-                            "ポ二子",
-                            chrome.runtime.getURL("poniko.png"),
-                            "https://www3.nns.ne.jp/~tk-mto/kikiyamaHP.html") 
+                            "   ",
+                            chrome.runtime.getURL("src/event/uboa/pic/poniko.png"),
+                            "https://www.youtube.com/watch?v=XrHzcWBeLyI") 
     element.id = "poniko"
     parentElement.prepend(element);
     return element
@@ -21,7 +21,7 @@ function uboaEvent(btn: HTMLElement, color: colorMode){
         const ponikoHeading = document.querySelector("#poniko > div > div > div.media-body.media-middle > h4")
 
         if (poniko !== null && ponikoHeading !== null){
-            poniko.src = chrome.runtime.getURL("uboa.png")
+            poniko.src = chrome.runtime.getURL("src/event/uboa/pic/uboa.png")
             ponikoHeading.textContent = ""
             const well = document.querySelectorAll(".well");
 
@@ -41,7 +41,7 @@ function uboaEvent(btn: HTMLElement, color: colorMode){
             linkBtn.textContent = "繝ｪ繝ｳ繧ｯ"
             const title = document.querySelector("h4")
             if(title){
-                title.textContent = "繧ｦ繝懊ぃ"
+                title.textContent = "   "
             }
         } else {
             console.log("エラー")

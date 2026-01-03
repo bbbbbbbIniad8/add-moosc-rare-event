@@ -6,6 +6,7 @@ let clickNum = 0
 
 
 async function typeEffect(div: HTMLElement) {
+    document.body.style.overflow = "hidden" 
     Object.assign(div.style, {
         display: "flex",
         flexDirection: "column",
@@ -76,7 +77,7 @@ function hatizihanEvent(e: PointerEvent){
 function addHatizihanWell(parentElement: Element){
     const element = addWell(parentElement,
                             "만져서는 안 된다",
-                            chrome.runtime.getURL("hatizihan.png"),
+                            chrome.runtime.getURL("src/event/hatizihan/pic/hatizihan.png"),
                             "https://youtu.be/haUwYGcZCMk?si=CyB6H46vFqVRWplU") 
     element.id = "hatizihan"
     parentElement.prepend(element);

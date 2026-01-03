@@ -11,9 +11,9 @@ function addRedRoom(){
     const closeBtn = document.createElement("div")
     if (!wrapper) return
     const img01 = document.createElement("img") as HTMLImageElement
-    img01.src = chrome.runtime.getURL("redRoom01.png")
+    img01.src = chrome.runtime.getURL("src/event/redRoom/pic/redRoom01.png")
     const img02 = document.createElement("img") as HTMLImageElement
-    img02.src = chrome.runtime.getURL("redRoom02.png")
+    img02.src = chrome.runtime.getURL("src/event/redRoom/pic/redRoom02.png")
     wrapper.appendChild(backDiv)
     backDiv.appendChild(div)
     div.appendChild(closeBar)
@@ -132,7 +132,7 @@ function addRedRoom(){
                 await sleep(100)
             }
             window.location.href = chrome.runtime.getURL('src/event/redRoom/redRoom.html');
-        }else{
+        }else if (push <= 30){
             await deletePopup(backDiv, DoYou, push, size, DoYouDefaultPosition)
         }
     }
@@ -148,7 +148,7 @@ async function deletePopup(element: HTMLElement, DoYou: HTMLElement,
 }
 
 function changePopup(element: HTMLElement, push: number, size: number, DoYouDefaultPosition: number){
-    if (push % 2 === 0 && push <= 32){
+    if (push % 2 === 0 && push <= 30){
             element.style.left = `${DoYouDefaultPosition - (push * size * 0.01)}px`
         }
     }

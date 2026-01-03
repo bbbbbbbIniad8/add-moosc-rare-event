@@ -15,7 +15,7 @@ function flash(){
 
 function breakEffect(){
     const breakDiv = document.createElement("img");
-    breakDiv.src = chrome.runtime.getURL("break.png")
+    breakDiv.src = chrome.runtime.getURL("src/effect/pic/break.png")
     Object.assign(breakDiv.style,{
       pointerEvents: "none",
       position: "fixed",

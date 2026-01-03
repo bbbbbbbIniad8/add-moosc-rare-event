@@ -11,6 +11,7 @@ const addGF = (lightBtn: HTMLElement, nowColorMode: colorMode, bgColor: string) 
     img.src = "https://fnaf.swiki.jp/index.php?plugin=ref&host=fnaf&page=Golden%20Freddy%28FNAF%29&src=Golden%20Freddy.png"
     const header = document.querySelector(".content-header")
     
+    
     Object.assign(div.style, {
         display: "flex",
         flexDirection: "column",
@@ -21,10 +22,9 @@ const addGF = (lightBtn: HTMLElement, nowColorMode: colorMode, bgColor: string) 
     
     if (header) {
         header.prepend(div)
-        div.addEventListener("click", GFEvent)
     }
 
-    let timerId: number | null = null;
+    let timerId: number | null = null
     const WAIT_TIME = 10000
 
     const callback: IntersectionObserverCallback = (entries) => {
@@ -32,11 +32,11 @@ const addGF = (lightBtn: HTMLElement, nowColorMode: colorMode, bgColor: string) 
             if (entry.isIntersecting) {
                 timerId = window.setTimeout(() => {
                     GFEvent()
-                }, WAIT_TIME);
+                }, WAIT_TIME)
             } else {
                 if (timerId) {
                     clearTimeout(timerId);
-                    timerId = null;
+                    timerId = null
                 }
                 div.style.display = "none";
                 addDarkMode(lightBtn, nowColorMode, bgColor, null, null)
@@ -68,10 +68,11 @@ async function GFEvent() {
         width: "100vw",
         height: "100vh",
         objectFit: "cover",
-        zIndex: "9998",
+        zIndex: "99999",
     })
     
     document.body.appendChild(img)
+    document.body.style.overflow = "hidden" 
     await sleep(2000)
     closeCurrentTab()
 }

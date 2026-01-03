@@ -5,7 +5,7 @@ import { addHatizihanWell } from "./event/hatizihan/hatizihan";
 import { monikaEvent } from "./event/monika/process";
 import { addRedRoom } from "./event/redRoom/redRoom";
 import { addSpk } from "./event/spk/spk";
-import { shouldntKilledEvent } from "./event/TheOneYouShouldntKilled/TheOneYouShouldntKilled";
+import { shouldntKilledEvent } from "./event/TheOneYouShouldntHaveKilled/TheOneYouShouldntHaveKilled";
 import { addUboaWell, uboaEvent } from "./event/uboa/uboa";
 import type { colorMode } from "./type/type";
 
@@ -30,6 +30,12 @@ interface GameEvent {
 }
 
 export const eventList: GameEvent[] = [
+  { 
+    name: 'none',
+    eventNum: 0,
+    weight: 500, 
+    action: () => { ; return {}; } 
+  },
   { 
     name: 'spk',
     eventNum: 1,

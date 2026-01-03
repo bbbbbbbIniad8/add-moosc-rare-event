@@ -9,6 +9,7 @@ function deleteOnNowEvent(){
         element.style.color = "red"
         element.style.padding = "0 3px 0 3px"
         div.appendChild(element)
+        console.log("すぐにけせ すぐにけせ すぐにけせ すぐにけせ すぐにけせ すぐにけせ")
     }
     Object.assign(div.style, {
         display: "flex",

@@ -20,7 +20,7 @@ window.onload = async() => {
 
     setTimeout(() => {
         add.textContent += "/"
-    }, 10000);
+    }, 15000);
 
     await sleep(20000)
 
@@ -37,12 +37,11 @@ window.onload = async() => {
       fontSize : '50px',
       fontWeight :'200',
       zIndex: '9999',
-      height: '100vh'
+      height: '100vh',
+      whiteSpace: "pre",
     }
     )
     div.textContent = "あなたは襍､縺?Κ螻から保護されました。\n元のサイトに戻ってください。";
     nameList.style.display="none"
     document.body.appendChild(div)
-
-    
 };

@@ -2,7 +2,6 @@ function shouldntKilledEvent(){
     const div = document.createElement("div")
     const img = document.createElement("img") as HTMLImageElement
     const wrapper = document.querySelector(".wrapper")
-
     const op = "0.4"
 
     if (!wrapper) return
@@ -24,7 +23,7 @@ function shouldntKilledEvent(){
     
     img.style.width = "100vh"
     img.style.opacity = op
-    img.src = chrome.runtime.getURL("TheOneYouShouldntHaveKilled.png")
+    img.src = chrome.runtime.getURL("src/event/TheOneYouShouldntHaveKilled/pic/TheOneYouShouldntHaveKilled.png")
     div.appendChild(img)
     wrapper.appendChild(div)
     div.className = "fade-out"

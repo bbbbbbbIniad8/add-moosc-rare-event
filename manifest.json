@@ -23,6 +23,8 @@
       "resources": ["*.png",
       "*.svg",
       "*.html",
+      "src/event/**/pic/*.png",
+      "src/effect/pic/*.png",
       "src/event/redRoom/redRoom.html",
       "assets/*"],
       "matches": ["https://moocs.iniad.org/*"]
