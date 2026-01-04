@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "INIAD MOOCs: Random Events",
+  "name": "INIAD MOOCs: Random Events(a版)",
   "version": "0.1.0",
-  "description": "INIAD MOOCs のメニュー画面でランダムで発生するイベントを追加して日々のMOOCsライフに刺激と彩りを与える拡張機能。",
+  "description": "INIAD MOOCs のトップ画面でランダムで発生するイベントを追加して日々のMOOCsライフに刺激と彩りを与える拡張機能。",
 
   "action": {
     "default_popup": "index.html"

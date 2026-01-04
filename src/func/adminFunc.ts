@@ -37,6 +37,9 @@ export class EventManager {
     const reloadBtn = addHeaderBtn(btnParent, chrome.runtime.getURL("reload.svg"), "reloadBtnIcon");
     reloadBtn.onclick = () => this.reload(null);
 
+    reloadBtn.setAttribute("data-tooltip", "サーバーに負荷をかけずにイベント再抽選");
+    reloadBtn.classList.add("custom-tooltip");
+
     Object.assign(btnParent.style, {
       display: "flex",
       justifyContent: "space-between"
