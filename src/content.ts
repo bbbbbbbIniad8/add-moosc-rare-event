@@ -2,9 +2,15 @@ import './index.css';
 import { EventManager } from './func/adminFunc';
 import { GFEvent } from './event/GF/GF';
 
+
+
 const manager = new EventManager();
 
 manager.decideEvent(null);
+
+
+
+
 
 window.addEventListener('keydown', async (e) => {
   if (manager.processing) return;

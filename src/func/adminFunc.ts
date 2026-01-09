@@ -34,7 +34,7 @@ export class EventManager {
     const tables = document.getElementsByClassName("row flex");
     const btnParent = document.createElement("div");
     const header = document.querySelector(".content-header") as HTMLElement;
-    const contentWrapper = document.querySelector(".content-wrapper") as HTMLElement;
+    // const contentWrapper = document.querySelector(".content-wrapper") as HTMLElement;
     const reloadBtn = addHeaderBtn(btnParent, chrome.runtime.getURL("reload.svg"), "reloadBtnIcon");
     
     reloadBtn.onclick = () => this.reload(null);
@@ -46,9 +46,16 @@ export class EventManager {
       justifyContent: "space-between"
     });
 
+    const div = document.createElement("div")
+    Object.assign(div.style, {
+      display: "flex",
+      justifyContent: "space-between"
+    });
+
     const lightBtn = darkmodeSwitch(btnParent);
-    header.prepend(reloadBtn)
-    contentWrapper.prepend(lightBtn)
+    div.prepend(lightBtn)
+    div.prepend(reloadBtn)
+    header.prepend(div)
     let lightEvent: (() => void)[] = [];
     let darkEvent: (() => void)[] = [];
 
