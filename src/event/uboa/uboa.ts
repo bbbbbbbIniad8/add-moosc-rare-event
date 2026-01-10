@@ -14,7 +14,7 @@ function addUboaWell(parentElement: Element){
 }
 
 function uboaEvent(btn: HTMLElement, color: colorMode){
-    if (randomNum(0, 63) > 4 && color === "light"){
+    if (randomNum(0, 63) === 4 && color === "light"){
         flash()
         shake()
         const poniko = document.querySelector("body > div.wrapper > div > section.content.container-fluid > div:nth-child(1) > div:nth-child(1) > div > div > div.media-left.media-middle > img") as HTMLImageElement
